@@ -1,0 +1,51 @@
+h1 {
+    font-family: 'Satoshi', sans-serif;
+}
+h2 {
+    font-family: 'Satoshi', sans-serif;
+}
+h3 {
+    font-family: 'Satoshi', sans-serif;
+}
+h4 {
+    font-family: 'Satoshi', sans-serif;
+}
+h5 {
+    font-family: 'Satoshi', sans-serif;
+}
+h6 {
+    font-family: 'Satoshi', sans-serif;
+}
+li {
+    font-family: 'Satoshi', sans-serif;
+}
+p {
+    font-family: 'Satoshi', sans-serif;
+}
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 0;
+    background-color: white;
+    z-index: 1000;
+    height: 5rem;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    font-family: 'Satoshi', sans-serif;
+}
+
+.nav-links a {
+    font-size: 1.1rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+}
