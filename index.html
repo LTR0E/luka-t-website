@@ -225,11 +225,11 @@
                 <div class="mt-8">
                     <h3 class="text-lg font-bold text-indigo-600">Playlist</h3>
                     <ul id="playlist" class="mt-4 text-left">
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 1" data-src="music\1. Awakening.wav">Track 1 - Awakening</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 2" data-src="music\2. Initial.wav">Track 2 - Initial</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 3" data-src="music\3. Soon.wav">Track 3 - Soon</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 4" data-src="music\4. Space.wav">Track 4 - Space</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 5" data-src="music\5. Ecliptic Dreams.wav">Track 5 - Ecliptic Dreams</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 1" data-src="music\1. Awakening.mp3">Track 1 - Awakening</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 2" data-src="music\2. Initial.mp3">Track 2 - Initial</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 3" data-src="music\3. Soon.mp3">Track 3 - Soon</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 4" data-src="music\4. Space.mp3">Track 4 - Space</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 5" data-src="music\5. Ecliptic Dreams.mp3">Track 5 - Ecliptic Dreams</li>
                     </ul>
                 </div>
             </div>
@@ -238,7 +238,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script>
-        let sound;
+        let sound = null;
         let isPlaying = false;
         const playPauseButton = document.getElementById('play-pause-button');
         const volumeControl = document.getElementById('volume-control');
@@ -246,19 +246,48 @@
         const trackTitle = document.getElementById('track-title');
         const playlistItems = document.querySelectorAll('#playlist li');
 
-        function togglePlayPause() {
-            if (sound) {
-                if (isPlaying) {
-                    sound.pause();
-                    isPlaying = false;
-                    updatePlayPauseButton();
-                } else {
-                    sound.play();
-                    isPlaying = true;
-                    updatePlayPauseButton();
+        async function loadTrack(trackName, trackSrc) {
+            try {
+                if (sound) {
+                    sound.unload();
                 }
-            } else {
-                trackTitle.textContent = 'Please select a track from the playlist';
+                trackTitle.textContent = `Loading: ${trackName}`;
+                sound = new Howl({
+                    src: [trackSrc.replace('.wav', '.mp3')],
+                    format: ['mp3'],
+                    preload: true,
+                    volume: volumeControl.value,
+                    onload: () => {
+                        sound.play();
+                        trackTitle.textContent = `Now playing: ${trackName}`;
+                        isPlaying = true;
+                        updatePlayPauseButton();
+                        if (!audioContext) {
+                            setupVisualizer();
+                        }
+                    },
+                    onloaderror: () => {
+                        trackTitle.textContent = 'Error loading track';
+                    },
+                    onplayerror: () => {
+                        trackTitle.textContent = 'Error playing track';
+                    }
+                });
+            } catch (error) {
+                trackTitle.textContent = 'Error loading track';
+                console.error('Error loading track:', error);
+            }
+        }
+
+        function togglePlayPause() {
+            if (sound && sound.playing()) {
+                sound.pause();
+                isPlaying = false;
+                updatePlayPauseButton();
+            } else if (sound) {
+                sound.play();
+                isPlaying = true;
+                updatePlayPauseButton();
             }
         }
 
@@ -266,41 +295,6 @@
             playPauseButton.innerHTML = isPlaying
                 ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
                 : '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
-        }
-
-        function loadTrack(trackName, trackSrc) {
-            if (sound) {
-                sound.unload();
-            }
-            sound = new Howl({
-                src: [trackSrc],
-                volume: volumeControl.value,
-                preload: true, // Ensure audio is preloaded
-                onload: () => {
-                    sound.play();
-                    trackTitle.textContent = `Now playing: ${trackName}`;
-                    isPlaying = true;
-                    updatePlayPauseButton();
-                    if (!audioContext) {
-                        setupVisualizer();
-                    }
-                },
-                onplay: () => {
-                    isPlaying = true;
-                    updatePlayPauseButton();
-                },
-                onend: () => {
-                    trackTitle.textContent = 'Playback ended';
-                    isPlaying = false;
-                    updatePlayPauseButton();
-                },
-                onloaderror: () => {
-                    trackTitle.textContent = 'Error loading track';
-                },
-                onplayerror: () => {
-                    trackTitle.textContent = 'Error playing track';
-                }
-            });
         }
 
         playPauseButton.addEventListener('click', togglePlayPause);
