@@ -7,6 +7,23 @@ h1, h2, h3, h4, h5, h6, li, p {
     border-radius: 1.5rem; /* This matches the rounded-3xl class */
     background-color: transparent;
 }
+#gallery {
+    margin-top: 20px;
+  }
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Creates as many columns as can fit without shrinking below 300px */
+    gap: 10px; /* Space between images */
+    justify-content: center; /* Center the entire grid */
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+
 
 .nav-container {
     display: flex;
@@ -33,6 +50,63 @@ h1, h2, h3, h4, h5, h6, li, p {
     font-weight: 400;
     display: flex;
     justify-content: center;
+}
+
+/* Style the modal (full-screen) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    position: absolute;
+    bottom: 20px; /* Adjust this value to control the spacing between the image and the caption */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+}
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .portfolio-item {
