@@ -1,27 +1,13 @@
-h1 {
+h1, h2, h3, h4, h5, h6, li, p {
     font-family: 'Satoshi', sans-serif;
 }
-h2 {
-    font-family: 'Satoshi', sans-serif;
+#visualizer {
+    opacity: 0.7; /* Adjust this value to make the visualizer more or less transparent */
+    mix-blend-mode: screen; /* This can create interesting color effects */
+    border-radius: 1.5rem; /* This matches the rounded-3xl class */
+    background-color: transparent;
 }
-h3 {
-    font-family: 'Satoshi', sans-serif;
-}
-h4 {
-    font-family: 'Satoshi', sans-serif;
-}
-h5 {
-    font-family: 'Satoshi', sans-serif;
-}
-h6 {
-    font-family: 'Satoshi', sans-serif;
-}
-li {
-    font-family: 'Satoshi', sans-serif;
-}
-p {
-    font-family: 'Satoshi', sans-serif;
-}
+
 .nav-container {
     display: flex;
     justify-content: center;
@@ -47,5 +33,123 @@ p {
     font-weight: 400;
     display: flex;
     justify-content: center;
-    justify-content: center;
+}
+
+.portfolio-item {
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s ease-out;
+    opacity: 0;
+    transform: translateY(50px);
+    filter: blur(7px);
+}
+
+.portfolio-item.show {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.nav-container,
+.bg-white,
+.text-gray-900,
+.bg-gray-100,
+.text-gray-700,
+.bg-indigo-600,
+.text-indigo-900 {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+.dark-mode {
+    background-color: #1a202c;
+    color: #e2e8f0;
+}
+
+.dark .bg-white {
+    background-color: #2d3748;
+}
+
+.dark .text-gray-900 {
+    color: #f7fafc; /* Lighter text for better readability */
+}
+
+.dark .bg-gray-100 {
+    background-color: #1c1f24; /* Slightly lighter background for contrast */
+}
+
+.dark .text-gray-700 {
+    color: #a0aec0; /* Softer gray for a balanced look */
+}
+
+.dark .bg-indigo-600 {
+    background-color: #5a67d8; /* Maintain contrast with a richer indigo */
+}
+
+.dark .text-indigo-900 {
+    color: #a3bffa; /* Softer indigo for text */
+}
+/* Navbar styles in dark mode */
+.dark nav {
+    background-color: #1a202c; /* Dark gray background for navbar */
+}
+
+/* Additional dark mode styling for the navbar */
+.dark .nav-container {
+    background-color: #1a202c; /* Ensuring the container background changes */
+    color: #e2e8f0; /* Light text color for navbar links */
+}
+
+/* Light mode navbar */
+.bg-white.bg-opacity-80 {
+    background-color: rgba(255, 255, 255, 0.8) !important; /* Ensure this has priority */
+}
+
+/* Dark mode navbar */
+.dark .bg-gray-900.dark:bg-opacity-80 {
+    background-color: rgba(26, 32, 44, 0.8) !important; /* Ensure this has priority */
+}
+
+/* Sticky navbar style */
+.sticky {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.6) !important; /* Ensure transparency when sticky */
+}
+
+.dark .sticky {
+    background-color: rgba(26, 32, 44, 0.6) !important; /* Ensure transparency when sticky in dark mode */
+}
+
+/* Smooth transition */
+nav {
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+
+/* Additional styles to maintain readability with transparency */
+.dark .nav-links a,
+.dark .text-white {
+    color: #e2e8f0; /* Ensure links are still readable */
+}
+
+.dark .nav-links a:hover {
+    color: #a3bffa;
+}
+
+
+
+
+@keyframes motionBlur {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
 }

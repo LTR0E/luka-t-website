@@ -13,30 +13,50 @@
     <meta property="og:url" content="http://lukatrenchovski.com">
 
     <title>Luka Trenchovski - Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="logo-circle.png">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
     
     <!-- Navbar with ARIA labels -->
-    <nav class="bg-white shadow" aria-label="Main Navigation">
+    <nav class="bg-white bg-opacity-80 shadow dark:bg-gray-900 dark:bg-opacity-80 fixed w-full top-0 z-50 transition-all duration-300" aria-label="Main Navigation">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center"> <!-- Changed h-16 to h-20 -->
-                <div class="nav-container w-full"> <!-- Added w-full -->
-                    <div class="nav-links hidden sm:ml-6 sm:flex sm:space-x-8 justify-center"> <!-- Added justify-center -->
-                        <a href="#home" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium" aria-label="Home">Home</a>
-                        <a href="#about" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium" aria-label="About Me">About Me</a>
-                        <a href="#portfolio" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium" aria-label="Portfolio">Portfolio</a>
-                        <a href="#skills" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium" aria-label="Skills">Skills</a>
-                        <a href="#contact" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium" aria-label="Contact">Contact</a>
+            <div class="flex justify-between h-20 items-center">
+                <div class="nav-container w-full flex justify-between items-center">
+                    <div class="nav-links hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#home" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium dark:text-white" aria-label="Home">Home</a>
+                        <a href="#about" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium dark:text-white" aria-label="About Me">About Me</a>
+                        <a href="#portfolio" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium dark:text-white" aria-label="Portfolio">Portfolio</a>
+                        <a href="#contact" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium dark:text-white" aria-label="Contact">Contact</a>
                     </div>
-                </div>                
+                    <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-300 p-2 rounded-md">
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h-1M4 12H3m14.364-5.364l-.707.707M6.343 6.343l-.707.707M18.364 18.364l-.707-.707M6.343 17.657l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <svg id="theme-toggle-dark-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h-1M4 12H3m14.364-5.364l-.707.707M6.343 6.343l-.707.707M18.364 18.364l-.707-.707M6.343 17.657l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
-
-
+    
+    <script>
+        const navbar = document.querySelector('nav');
+        const stickyClass = 'sticky';
+    
+        window.addEventListener('resize', function() {
+            const musicPlayer = document.getElementById('music-player');
+            canvas.width = musicPlayer.offsetWidth;
+            canvas.height = musicPlayer.offsetHeight;
+        });
+    </script>
+    
+    
     <!-- Style the home section with a background image -->
     <style>
         #home::before {
@@ -68,19 +88,18 @@
     <!-- About Me Section -->
     <section id="about" class="py-20 bg-white">
         <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-indigo-600">About Me</h2>
+            <h2 class="text-3xl font-bold text-indigo-900">About Me</h2>
             <p class="mt-4 text-lg text-gray-700">I am a creative and versatile Freelance Music Producer with over 5 years of experience, specializing in Rap, R&B, and Electronic music production. Passionate about blending musical styles to create unique and engaging listening experiences.</p>
             <div class="mt-8 flex flex-col sm:flex-row sm:justify-around">
                 <div>
-                    <h3 class="text-xl font-bold text-indigo-600">Education</h3>
+                    <h3 class="text-xl font-bold text-indigo-900">Education</h3>
                     <ul class="mt-2 text-gray-700">
                         <li>BA (Hons) Music Production and Sound Engineering, Point Blank Music School</li>
                         <li>RSL Level 3 Extended Diploma in the Music Industry (Production)</li>
-                        <li>GSCE English, Maths, Combined Science</li>
                     </ul>
                 </div>
                 <div class="mt-8 sm:mt-0">
-                    <h3 class="text-xl font-bold text-indigo-600">Interests</h3>
+                    <h3 class="text-xl font-bold text-indigo-900">Interests</h3>
                     <ul class="mt-2 text-gray-700">
                         <li>Music Production</li>
                         <li>Graphic Design</li>
@@ -93,99 +112,208 @@
     </section>
 
     <!-- Portfolio Section with improved responsiveness -->
-    <section id="portfolio" class="py-20 bg-gray-100">
+    <section id="portfolio" class="py-20 bg-gray-100" style="background-color:#00205c;">
         <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-indigo-600">Portfolio</h2>
+            <h2 class="text-3xl font-bold text-white">Portfolio</h2>
             <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Portfolio items with alt attributes -->
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                    <img src="https://source.unsplash.com/random/400x300?graphic-design" alt="Graphic Design Project - AsterFest International Film Festival" class="w-full h-48 object-cover">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden portfolio-item">
+                    <img src="gd.jpg" alt="Graphic Design Project - AsterFest International Film Festival" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="font-bold text-indigo-600">AsterFest International Film Festival</h3>
+                        <h3 class="font-bold text-indigo-600">Graphic Design</h3>
                         <p class="text-gray-700 mt-2">Created graphic designs for promotional materials.</p>
                     </div>
                 </div>
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                    <img src="Luminary Conflux.png" alt="Music Production Project" class="w-full h-48 object-cover">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden portfolio-item">
+                    <img src="mp.jpg" alt="Music Production Project" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="font-bold text-indigo-600">Music Production</h3>
                         <p class="text-gray-700 mt-2">Produced original instrumental tracks in various genres.</p>
                     </div>
                 </div>
                 <!-- More portfolio items can be added in similar fashion -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden portfolio-item">
+                    <img src="mixing.jpg" alt="Mixing" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-indigo-600">Mixing</h3>
+                        <p class="text-gray-700 mt-2">Mixed original tracks in various genres.</p>
+                    </div>
+                </div>
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden portfolio-item">
+                    <img src="cassete.jpg" alt="Sound Design" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-indigo-600">Sound Design</h3>
+                        <p class="text-gray-700 mt-2">Designed original sounds using synthesis and sample manipulation.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <!-- Music Player Section -->
-    <section id="music-player" class="py-20 bg-gray-100">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-indigo-600">Listen to My Music</h2>
-            <div class="mt-10 bg-white shadow-lg rounded-lg p-6">
+
+    <style>
+    .portfolio-item {
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .portfolio-item.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.animation = `motionBlur 0.6s ease-out ${index * 0.1}s forwards`;
+                        }, index * 100); // Stagger effect
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            portfolioItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+
+
+    <!-- Music Player Section with Scaled Blurred Background and Rounded Corners -->
+    <div class="max-w-6xl mx-auto my-8">
+        <section id="music-player" class="py-20 bg-gray-100 relative overflow-hidden rounded-3xl" style="height: 800px;">
+            <!-- Blurred Background Image -->
+            <div class="absolute inset-0 z-0 rounded-3xl overflow-hidden">
+                <img src="logo.jpg" alt="Blurred Background" class="w-full h-full object-cover filter blur-md scale-110">
+                <div class="absolute inset-0 bg-black opacity-50"></div>
+            </div>
+        
+            <div class="absolute inset-0 bg-black opacity-30 z-5"></div>
+
+            <!-- Audio Visualizer -->
+            <canvas id="visualizer" class="absolute inset-0 w-full h-full z-10"></canvas>
+
+
+
+        
+        <!-- Content -->
+        <div class="max-w-5xl mx-auto text-center relative z-20">
+            <h2 class="text-3xl font-bold text-white">Listen to My Music</h2>
+            <div class="mt-10 bg-white bg-opacity-80 shadow-lg rounded-2xl p-6">
                 <!-- Music Player Controls -->
                 <div class="flex flex-col items-center">
                     <div id="track-title" class="text-xl font-bold text-gray-900 mb-4">Select a track to play</div>
-                    <div class="flex items-center space-x-4">
-                        <button id="play-button" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">Play</button>
-                        <button id="pause-button" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">Pause</button>
-                        <input type="range" id="volume-control" min="0" max="1" step="0.01" class="w-32">
+                    <div class="flex items-center space-x-4 w-full max-w-md">
+                        <button id="play-pause-button" class="bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </button>
+                        <div class="flex-grow">
+                            <input type="range" id="progress-bar" class="w-full rounded-lg" min="0" max="100" value="0">
+                        </div>
+                        <input type="range" id="volume-control" min="0" max="1" step="0.01" class="w-24 rounded-lg">
                     </div>
                 </div>
                 <!-- Playlist -->
                 <div class="mt-8">
                     <h3 class="text-lg font-bold text-indigo-600">Playlist</h3>
                     <ul id="playlist" class="mt-4 text-left">
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 1" data-src="Awakening.wav">Track 1 - Title of the first song</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 2" data-src="track2.mp3">Track 2 - Title of the second song</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 3" data-src="track3.mp3">Track 3 - Title of the third song</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 1" data-src="music\1. Awakening.wav">Track 1 - Awakening</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 2" data-src="music\2. Initial.wav">Track 2 - Initial</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 3" data-src="music\3. Soon.wav">Track 3 - Soon</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 4" data-src="music\4. Space.wav">Track 4 - Space</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 5" data-src="music\5. Ecliptic Dreams.wav">Track 5 - Ecliptic Dreams</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script>
-        // Howler.js setup
         let sound;
-        const playButton = document.getElementById('play-button');
-        const pauseButton = document.getElementById('pause-button');
+        let isPlaying = false;
+        const playPauseButton = document.getElementById('play-pause-button');
         const volumeControl = document.getElementById('volume-control');
+        const progressBar = document.getElementById('progress-bar');
         const trackTitle = document.getElementById('track-title');
         const playlistItems = document.querySelectorAll('#playlist li');
 
-        // Load and play the selected track
+        function togglePlayPause() {
+            if (sound) {
+                if (isPlaying) {
+                    sound.pause();
+                    isPlaying = false;
+                    updatePlayPauseButton();
+                } else {
+                    sound.play();
+                    isPlaying = true;
+                    updatePlayPauseButton();
+                }
+            } else {
+                trackTitle.textContent = 'Please select a track from the playlist';
+            }
+        }
+
+        function updatePlayPauseButton() {
+            playPauseButton.innerHTML = isPlaying
+                ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
+                : '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+        }
+
         function loadTrack(trackName, trackSrc) {
             if (sound) {
-                sound.stop();
+                sound.unload();
             }
             sound = new Howl({
                 src: [trackSrc],
-                volume: volumeControl.value
+                volume: volumeControl.value,
+                onplay: () => {
+                    trackTitle.textContent = `Now playing: ${trackName}`;
+                    isPlaying = true;
+                    updatePlayPauseButton();
+                    if (!audioContext) {
+                        setupVisualizer();
+                    }
+                },
+                onend: () => {
+                    trackTitle.textContent = 'Playback ended';
+                    isPlaying = false;
+                    updatePlayPauseButton();
+                },
+                onloaderror: () => {
+                    trackTitle.textContent = 'Error loading track';
+                },
+                onplayerror: () => {
+                    trackTitle.textContent = 'Error playing track';
+                }
             });
-            trackTitle.textContent = trackName;
             sound.play();
         }
 
-        // Handle play and pause
-        playButton.addEventListener('click', () => {
-            if (sound) {
-                sound.play();
-            }
-        });
 
-        pauseButton.addEventListener('click', () => {
-            if (sound) {
-                sound.pause();
-            }
-        });
+        playPauseButton.addEventListener('click', togglePlayPause);
 
-        // Handle volume control
         volumeControl.addEventListener('input', () => {
             if (sound) {
                 sound.volume(volumeControl.value);
             }
         });
 
-        // Handle track selection from the playlist
+        progressBar.addEventListener('input', () => {
+            if (sound) {
+                const seekTime = (progressBar.value / 100) * sound.duration();
+                sound.seek(seekTime);
+            }
+        });
+
         playlistItems.forEach(item => {
             item.addEventListener('click', () => {
                 const trackName = item.getAttribute('data-track');
@@ -193,47 +321,166 @@
                 loadTrack(trackName, trackSrc);
             });
         });
+
+        // Update progress bar
+        setInterval(() => {
+            if (sound && isPlaying) {
+                const progress = (sound.seek() / sound.duration()) * 100;
+                progressBar.value = progress;
+            }
+        }, 100);
+
+        // Audio Visualizer
+        const canvas = document.getElementById('visualizer');
+        const ctx = canvas.getContext('2d');
+        let audioContext, analyser, dataArray, source;
+
+    function setupVisualizer() {
+        const musicPlayer = document.getElementById('music-player');
+        canvas.width = musicPlayer.offsetWidth;
+        canvas.height = musicPlayer.offsetHeight;
+
+        audioContext = Howler.ctx;
+        analyser = Howler.ctx.createAnalyser();
+        analyser.fftSize = 256;
+
+        const bufferLength = analyser.frequencyBinCount;
+        dataArray = new Uint8Array(bufferLength);
+
+        Howler.masterGain.connect(analyser);
+        
+        drawVisualizer();
+    }
+
+
+        function drawVisualizer() {
+            requestAnimationFrame(drawVisualizer);
+
+            analyser.getByteFrequencyData(dataArray);
+
+            // Clear the canvas with a transparent fill
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const barWidth = (canvas.width / dataArray.length) * 1.5;
+            let barHeight;
+            let x = 0;
+
+            for (let i = 0; i < dataArray.length; i++) {
+                barHeight = (dataArray[i] / 255) * canvas.height * 0.7;
+
+                // Use rgba to set transparency
+                ctx.fillStyle = `rgba(255, 255, 255, ${barHeight / canvas.height})`;
+                ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+
+                x += barWidth + 1;
+            }
+        }
+
     </script>
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-white">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-indigo-600">Skills</h2>
-            <div class="mt-8 flex flex-col sm:flex-row sm:justify-around">
-                <div>
-                    <ul class="mt-2 text-gray-700">
-                        <li>Music Production</li>
-                        <li>Mixing</li>
-                        <li>Mastering</li>
-                        <li>Sound Design</li>
-                    </ul>
-                </div>
-                <!-- More skills can be added similarly -->
-            </div>
-        </div>
-    </section>
+    
+    
 
     <!-- Contact Section with ARIA and alt attributes -->
     <section id="contact" class="py-20 bg-gray-100">
         <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-indigo-600">Contact Me</h2>
+            <h2 class="text-3xl font-bold text-indigo-900">Contact Me</h2>
             <p class="mt-4 text-lg text-gray-700">Feel free to reach out to discuss potential collaborations or projects.</p>
-            <form action="mailto:lukatrenchovski@gmail.com" method="POST" enctype="text/plain" class="mt-8">
+            <form id="contact-form" action="https://formspree.io/f/meojdelv" method="POST" class="mt-8">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" name="name" placeholder="Your Name" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" aria-label="Your Name">
-                    <input type="email" name="email" placeholder="Your Email" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" aria-label="Your Email">
+                    <input type="text" name="name" placeholder="Your Name" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" aria-label="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600" aria-label="Your Email" required>
                 </div>
-                <textarea name="message" rows="5" placeholder="Your Message" class="mt-4 px-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-indigo-600" aria-label="Your Message"></textarea>
-                <button type="submit" class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700" aria-label="Send Message">Send Message</button>
+                <textarea name="message" rows="5" placeholder="Your Message" class="mt-4 px-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-indigo-600" aria-label="Your Message" required></textarea>
+                <button type="submit" id="submit-btn" class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-900" aria-label="Send Message">Send Message</button>
             </form>
+            <div id="result" class="mt-4 text-center hidden"></div>
+
+            <script>
+                const form = document.getElementById('contact-form');
+                const result = document.getElementById('result');
+                const submitButton = document.getElementById('submit-btn');
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Sending...';
+                    result.classList.add('hidden');
+
+                    fetch(form.action, {
+                        method: form.method,
+                        body: new FormData(form),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        result.innerHTML = 'Thank you! Your message has been sent.';
+                        result.classList.remove('hidden');
+                        result.classList.add('text-green-600');
+                        form.reset();
+                    })
+                    .catch(error => {
+                        result.innerHTML = 'Oops! There was a problem submitting your form. Please try again.';
+                        result.classList.remove('hidden');
+                        result.classList.add('text-red-600');
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Message';
+                    });
+                });
+            </script>
         </div>
     </section>
 
 
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 py-4 text-center">
+    <footer class="bg-gray-100 text-gray-400 py-4 text-center">
         <p>&copy; 2024 Luka Trenchovski. All Rights Reserved.</p>
     </footer>
 
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+
+        const enableDarkMode = () => {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            themeToggleLightIcon.classList.add('hidden');
+            themeToggleDarkIcon.classList.remove('hidden');
+        };
+
+        const disableDarkMode = () => {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            themeToggleLightIcon.classList.remove('hidden');
+            themeToggleDarkIcon.classList.add('hidden');
+        };
+
+        // Load user preference or detect system preference
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+    </script>
+
+    
 </body>
 </html>
+
+
+
