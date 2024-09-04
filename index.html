@@ -225,7 +225,7 @@
                 <div class="mt-8">
                     <h3 class="text-lg font-bold text-indigo-600">Playlist</h3>
                     <ul id="playlist" class="mt-4 text-left">
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 1" data-src="music/1.%20Awakening.mp3">Track 1 - Awakening</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 1" data-src="music\1. Awakening.mp3">Track 1 - Awakening</li>
                         <li class="cursor-pointer hover:text-indigo-600" data-track="Track 2" data-src="music\2. Initial.mp3">Track 2 - Initial</li>
                         <li class="cursor-pointer hover:text-indigo-600" data-track="Track 3" data-src="music\3. Soon.mp3">Track 3 - Soon</li>
                         <li class="cursor-pointer hover:text-indigo-600" data-track="Track 4" data-src="music\4. Space.mp3">Track 4 - Space</li>
@@ -252,12 +252,14 @@
                     sound.unload();
                 }
                 trackTitle.textContent = `Loading: ${trackName}`;
+                console.log(`Loading track: ${trackSrc}`);  // Debugging line
                 sound = new Howl({
-                    src: [trackSrc.replace('.wav', '.mp3')],
-                    format: ['mp3'],
+                    src: [trackSrc],
+                    format: ['mp3', 'wav'],  // Add 'wav' as a fallback
                     preload: true,
                     volume: volumeControl.value,
                     onload: () => {
+                        console.log(`Track loaded: ${trackSrc}`);  // Debugging line
                         sound.play();
                         trackTitle.textContent = `Now playing: ${trackName}`;
                         isPlaying = true;
@@ -266,16 +268,18 @@
                             setupVisualizer();
                         }
                     },
-                    onloaderror: () => {
+                    onloaderror: (id, err) => {
+                        console.error(`Error loading track: ${err}`, trackSrc);  // Debugging line
                         trackTitle.textContent = 'Error loading track';
                     },
-                    onplayerror: () => {
+                    onplayerror: (id, err) => {
+                        console.error(`Error playing track: ${err}`, trackSrc);  // Debugging line
                         trackTitle.textContent = 'Error playing track';
                     }
                 });
             } catch (error) {
+                console.error('Unexpected error loading track:', error);  // Debugging line
                 trackTitle.textContent = 'Error loading track';
-                console.error('Error loading track:', error);
             }
         }
 
