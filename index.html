@@ -275,13 +275,19 @@
             sound = new Howl({
                 src: [trackSrc],
                 volume: volumeControl.value,
-                onplay: () => {
+                preload: true, // Ensure audio is preloaded
+                onload: () => {
+                    sound.play();
                     trackTitle.textContent = `Now playing: ${trackName}`;
                     isPlaying = true;
                     updatePlayPauseButton();
                     if (!audioContext) {
                         setupVisualizer();
                     }
+                },
+                onplay: () => {
+                    isPlaying = true;
+                    updatePlayPauseButton();
                 },
                 onend: () => {
                     trackTitle.textContent = 'Playback ended';
@@ -295,9 +301,7 @@
                     trackTitle.textContent = 'Error playing track';
                 }
             });
-            sound.play();
         }
-
 
         playPauseButton.addEventListener('click', togglePlayPause);
 
@@ -322,7 +326,6 @@
             });
         });
 
-        // Update progress bar
         setInterval(() => {
             if (sound && isPlaying) {
                 const progress = (sound.seek() / sound.duration()) * 100;
