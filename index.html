@@ -225,11 +225,11 @@
                 <div class="mt-8">
                     <h3 class="text-lg font-bold text-indigo-600">Playlist</h3>
                     <ul id="playlist" class="mt-4 text-left">
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 1" data-src="music\Awakening.mp3">Track 1 - Awakening</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 2" data-src="music\Initial.mp3">Track 2 - Initial</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 3" data-src="music\Soon.mp3">Track 3 - Soon</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 4" data-src="music\Space.mp3">Track 4 - Space</li>
-                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 5" data-src="music\Ecliptic_Dreams.mp3">Track 5 - Ecliptic Dreams</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 1" data-src="music/Awakening.mp3">Track 1 - Awakening</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 2" data-src="music/Initial.mp3">Track 2 - Initial</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 3" data-src="music/Soon.mp3">Track 3 - Soon</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 4" data-src="music/Space.mp3">Track 4 - Space</li>
+                        <li class="cursor-pointer hover:text-indigo-600" data-track="Track 5" data-src="music/Ecliptic_Dreams.mp3">Track 5 - Ecliptic Dreams</li>
                     </ul>
                 </div>
             </div>
@@ -246,16 +246,21 @@
         const trackTitle = document.getElementById('track-title');
         const playlistItems = document.querySelectorAll('#playlist li');
 
-        async function loadTrack(trackName, trackSrc) {
+        function loadTrack(trackName, trackSrc) {
             try {
                 if (sound) {
                     sound.unload();
                 }
                 trackTitle.textContent = `Loading: ${trackName}`;
                 console.log(`Loading track: ${trackSrc}`);  // Debugging line
+
+                // Provide both OGG and MP3 formats
                 sound = new Howl({
-                    src: [trackSrc],
-                    format: ['mp3', 'wav'],  // Add 'wav' as a fallback
+                    src: [
+                        trackSrc.replace('.mp3', '.ogg'),  // OGG version as the first choice
+                        trackSrc  // MP3 version as the fallback
+                    ],
+                    format: ['ogg', 'mp3'],  // List both formats
                     preload: true,
                     volume: volumeControl.value,
                     onload: () => {
@@ -282,6 +287,7 @@
                 trackTitle.textContent = 'Error loading track';
             }
         }
+
 
         function togglePlayPause() {
             if (sound && sound.playing()) {
