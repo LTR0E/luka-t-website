@@ -268,3 +268,31 @@ nav {
     transform: scale(1.05);  /* Slightly increase size on hover */
     animation: neonPulse 1.5s infinite ease-in-out;  /* Pulsing glow effect */
 }
+
+/* Fade-in animation for the about section */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.section-fade {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease; /* Smooth transition for opacity and transform */
+}
+
+/* Add the animation to the about section when it becomes visible in the viewport */
+.section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Trigger the fade-in effect when the element is in view */
+.section-fade {
+    /* Ensure visibility of the element before applying animation */
+    visibility: hidden;
+}
+
+.section-fade.visible {
+    visibility: visible;
+}

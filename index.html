@@ -60,6 +60,7 @@
     <!-- Style the home section with a background image -->
     <style>
         #home::before {
+            height: 100vh; /* Full viewport height */
             content: "";
             position: absolute;
             top: 0;
@@ -67,11 +68,17 @@
             right: 0;
             bottom: -90px;
             background-image: url('logo.jpg');
-            background-position: center center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-repeat: no-repeat;
-            background-size: 2000px 2000px cover;
-            filter: blur(70px);
+            filter: blur(60px);
             z-index: -1;
+            background-position: 50% 50%; /* Initial position */
+            transition: background-position 1s ease; /* Smooth transition for movement */
         }
     </style>
     
@@ -87,14 +94,16 @@
     
     <!-- About Me Section -->
     <section id="about" class="py-20 bg-white">
-        <div class="max-w-5xl mx-auto text-center">
+        <div class="max-w-5xl mx-auto text-center section-fade">
             <h2 class="text-3xl font-bold text-indigo-900">About Me</h2>
             <p class="mt-4 text-lg text-gray-700">I am a creative and versatile <strong> Music Producer</strong> with over <strong>5 years of experience</strong>, specializing in <Strong><em></em>Rap</Strong>, <Strong>R&B</Strong>, and <Strong>Electronic</Strong> music production. Passionate about blending musical styles to create unique and engaging listening experiences.</p>
             <div class="mt-8 flex flex-col sm:flex-row sm:justify-around">
                 <div>
                     <h3 class="text-xl font-bold text-indigo-900">Education</h3>
                     <ul class="mt-2 text-gray-700">
-                        <li>BA (Hons) Music Production and Sound Engineering</li>
+                        <strong>
+                            <li>BA (Hons) Music Production and Sound Engineering</li>
+                        </strong>
                     </ul>
                 </div>
                 <div class="mt-8 sm:mt-0">
@@ -111,6 +120,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Portfolio Section with improved responsiveness -->
     <section id="portfolio" class="py-20 bg-gray-100" style="background-color:#00205c;">
@@ -456,6 +466,23 @@
                 enableDarkMode();
             }
         });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('.section-fade');
+            const sectionObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optionally, remove the observer to avoid multiple animations
+                        sectionObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 }); // Adjust the threshold as needed
+
+            sections.forEach(section => sectionObserver.observe(section));
+        });
+
+
     </script>
 
     
