@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Gallery - Luka Trenchovski</title>
+    <title>Music Showcase - Luka Trenchovski</title>
     <link rel="icon" type="image/x-icon" href="logo-circle.png">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
@@ -37,43 +37,27 @@
 
     <!-- Gallery Section -->
     <section class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" id="gallery">
-
-            <h2 class="text-3xl font-bold text-center text-gray-900">Design Gallery</h2>            </div>
-            <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                <!-- Example Image -->
-                <div class="overflow-hidden shadow-lg rounded-lg image-hover nohover">
-                    <a href="#" onclick="return false;">
-                        <img src="images/Luminar Horizon Synthwave Cover 1.png" alt="1" class="gallery-img">
-                    </a>
-                </div>
-                <div class="overflow-hidden shadow-lg rounded-lg image-hover nohover">
-                    <a href="#" onclick="return false;">
-                        <img src="images/Luminary Conflux.png" alt="2" class="gallery-img">
-                    </a>
-                </div>
-                <div class="overflow-hidden shadow-lg rounded-lg image-hover nohover">
-                    <a href="#" onclick="return false;">
-                        <img src="images/IDK liquid text art.jpg" alt="3" class="gallery-img">
-                    </a>
-                </div>
-                <div class="overflow-hidden shadow-lg rounded-lg image-hover nohover">
-                    <a href="#" onclick="return false;">
-                        <img src="logo.jpg" alt="4" class="gallery-img">
-                    </a>
-                </div>
-                <!-- Repeat for other images -->
+        <h2 class="text-3xl font-bold text-center text-gray-900" id="mp-heading">Music Production</h2>  
+        <div class="gallery">
+            <!-- Video Tile 1 -->
+            <div class="video-tile">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/HQtk-eFIB50" title="(FREE) &quot;Punch&quot; - Migos x DaBaby x Future Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
+            <!-- Video Tile 2 -->
+            <div class="video-tile">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hrDLsjWnLBQ" title="(FREE) &quot;Paper&quot; - DaBaby X Rich The Kid Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video Tile 3 -->
+            <div class="video-tile">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/MQ8z9S5DzEM" title="(FREE) &quot;Era&quot; - Pop Smoke x Fivio Foreign Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Video Tile 4 -->
+            <div class="video-tile">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/_TfxLVTNCJw" title="(FREE) &quot;Fraud&quot; - Comethazine x Smokepurpp Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- Add more video tiles as needed -->
         </div>
 
-        <!-- Modal for full-screen image view -->
-        <div id="myModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
-            <div id="caption"></div>
-        </div>
-
-    </section>
 
     <!-- Optional: Include other sections or footer from index.html -->
     <!-- Footer -->
@@ -118,37 +102,6 @@
         });
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script>
-        // Any specific scripts for the gallery page
-        // Get the modal
-        var modal = document.getElementById("myModal");
 
-        // Get the images and insert it inside the modal - use its "alt" text as a caption
-        var images = document.getElementsByClassName('gallery-img');
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption");
-        Array.from(images).forEach(img => {
-            img.onclick = function(){
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                captionText.innerHTML = this.alt;
-            }
-        });
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() { 
-            modal.style.display = "none";
-        }
-        // Close the modal when the user clicks outside the modal content
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>

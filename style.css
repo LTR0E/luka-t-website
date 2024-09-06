@@ -304,3 +304,28 @@ nav {
 .scale-up:active {
     transform: scale(1.13); /* Scale up by 10% when active (clicked) */
 }
+
+/* Basic styling for the gallery container */
+.gallery {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to next line if not enough space */
+    justify-content: center; /* Centers items horizontally */
+}
+
+/* Styling for each video tile */
+.video-tile {
+    margin: 10px;
+    margin-top: 30px;
+    border: 2px solid #ddd; /* Optional: Adds a border around the videos */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+}
+
+/* Responsive iframe styling */
+.video-tile iframe {
+    width: 720px; /* Adjust based on your design needs and responsiveness */
+    height: 480px; /* Standard YouTube aspect ratio is roughly 16:9 */
+}
+
+#mp-heading {
+    margin-top: 20px;
+}
