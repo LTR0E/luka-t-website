@@ -317,7 +317,7 @@ nav {
     margin: 10px;
     margin-top: 30px;
     border: 2px solid #ddd; /* Optional: Adds a border around the videos */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
 }
 
 /* Responsive iframe styling */
