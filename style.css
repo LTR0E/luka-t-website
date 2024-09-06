@@ -296,3 +296,11 @@ nav {
 .section-fade.visible {
     visibility: visible;
 }
+
+.scale-up {
+    transition: transform 0.1s ease; /* Smooth transition for the scale effect */
+}
+
+.scale-up:active {
+    transform: scale(1.13); /* Scale up by 10% when active (clicked) */
+}
