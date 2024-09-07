@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Showcase - Luka Trenchovski</title>
+    <link rel="icon" type="image/x-icon" href="logo-circle.png">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Reuse the Navbar from index.html -->
+    <!-- Navbar with ARIA labels -->
+    <nav class="bg-white bg-opacity-80 shadow dark:bg-gray-900 dark:bg-opacity-80 fixed w-full top-0 z-50 transition-all duration-300" aria-label="Main Navigation">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="nav-container w-full flex justify-between items-center">
+                    <div class="nav-links hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="index.html#home" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium dark:text-white navbar nohover" aria-label="Home">Home</a>
+                        <a href="index.html#about" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium dark:text-white navbar nohover" aria-label="About Me">About Me</a>
+                        <a href="index.html#portfolio" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium dark:text-white navbar nohover" aria-label="Portfolio">Portfolio</a>
+                        <a href="index.html#contact" class="text-gray-900 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium dark:text-white navbar nohover" aria-label="Contact">Contact</a>
+                    </div>
+                    <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-300 p-2 rounded-md navbar nohover">
+                        <svg id="theme-toggle-light-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h-1M4 12H3m14.364-5.364l-.707.707M6.343 6.343l-.707.707M18.364 18.364l-.707-.707M6.343 17.657l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <svg id="theme-toggle-dark-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h-1M4 12H3m14.364-5.364l-.707.707M6.343 6.343l-.707.707M18.364 18.364l-.707-.707M6.343 17.657l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Section -->
+    <section class="py-20 bg-white">
+        <h2 class="text-3xl font-bold text-center text-gray-900" id="mp-heading">Sound Design</h2>  
+        <div class="gallery">
+            <!-- Video Tile 1 -->
+            <div class="video-tile">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/HQtk-eFIB50" title="(FREE) &quot;Punch&quot; - Migos x DaBaby x Future Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+
+
+
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+
+        const enableDarkMode = () => {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            themeToggleLightIcon.classList.add('hidden');
+            themeToggleDarkIcon.classList.remove('hidden');
+        };
+
+        const disableDarkMode = () => {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            themeToggleLightIcon.classList.remove('hidden');
+            themeToggleDarkIcon.classList.add('hidden');
+        };
+
+        // Load user preference or detect system preference
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+    </script>
+
+</body>
+</html>

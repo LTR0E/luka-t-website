@@ -198,10 +198,6 @@ body {
     background-color: rgba(26, 32, 44, 0.6) !important; /* Ensure transparency when sticky in dark mode */
 }
 
-/* Smooth transition */
-nav {
-    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-}
 
 
 /* Additional styles to maintain readability with transparency */
@@ -328,4 +324,10 @@ nav {
 
 #mp-heading {
     margin-top: 20px;
+}
+
+.yt-icon {
+    width: 80px;
+    height: 80px;
+    margin: auto;
 }
