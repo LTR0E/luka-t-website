@@ -335,7 +335,7 @@ body {
 }
 
 .icon-list li {
-    border: 2px solid #d4dbff; /* Add a border around the buttons */
+    border: 0px solid #d4dbff; /* Add a border around the buttons */
     border-radius: 50%; /* Make it circular */
     padding: 2px; /* Padding inside the circle */
 }
@@ -346,7 +346,7 @@ body {
 }
 
 .icon-list img:hover {
-    border: solid #2146ff; /* Add a border around the buttons */
+    border: solid #788fff; /* Add a border around the buttons */
     border-radius: 50%; /* Make it circular */
 }
 
