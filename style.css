@@ -326,8 +326,33 @@ body {
     margin-top: 20px;
 }
 
-.yt-icon {
-    width: 80px;
-    height: 80px;
-    margin: auto;
+/* styles.css */
+.icon-list {
+    list-style: none; /* Remove default bullets */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Flexbox for layout */
+    gap: 10px; /* Space between icons */
+}
+
+.icon-list li {
+    border: 2px solid #d4dbff; /* Add a border around the buttons */
+    border-radius: 50%; /* Make it circular */
+    padding: 2px; /* Padding inside the circle */
+}
+
+.icon-list img {
+    width: 40px; /* Set icon size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.icon-list img:hover {
+    border: solid #2146ff; /* Add a border around the buttons */
+    border-radius: 50%; /* Make it circular */
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center;     /* Centers items vertically */
+
 }
