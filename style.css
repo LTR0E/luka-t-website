@@ -301,6 +301,7 @@ body {
     transform: scale(1.13); /* Scale up by 10% when active (clicked) */
 }
 
+
 /* Basic styling for the gallery container */
 .gallery {
     display: flex;
