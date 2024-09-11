@@ -160,9 +160,6 @@ body {
     color: #a0aec0; /* Softer gray for a balanced look */
 }
 
-.dark .bg-indigo-600 {
-    background-color: #5a67d8; /* Maintain contrast with a richer indigo */
-}
 
 .dark .text-indigo-900 {
     color: #a3bffa; /* Softer indigo for text */
@@ -357,3 +354,4 @@ body {
     align-items: center;     /* Centers items vertically */
 
 }
+
