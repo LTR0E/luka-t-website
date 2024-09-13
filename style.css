@@ -1,12 +1,7 @@
 h1, h2, h3, h4, h5, h6, li, p {
     font-family: 'Satoshi', sans-serif;
 }
-#visualizer {
-    opacity: 0.7; /* Adjust this value to make the visualizer more or less transparent */
-    mix-blend-mode: screen; /* This can create interesting color effects */
-    border-radius: 1.5rem; /* This matches the rounded-3xl class */
-    background-color: transparent;
-}
+
 #gallery {
     margin-top: 20px;
   }

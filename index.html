@@ -125,7 +125,7 @@
 
 
     <!-- Portfolio Section with improved responsiveness -->
-    <section id="portfolio" class="py-20 bg-gray-100 " style="background-color:#00205c;">
+    <section id="portfolio" class="py-20 bg-gray-100 " style="background-color:#1e2533;">
         <div class="max-w-7xl mx-auto text-center ">
             <h2 class="text-3xl font-bold text-white">Portfolio</h2>
             <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -158,7 +158,7 @@
 
     <!-- Music Player Section with Scaled Blurred Background and Rounded Corners -->
     <div class="max-w-6xl mx-auto my-8">
-        <section id="music-player" class="py-20 bg-gray-100 relative overflow-hidden rounded-3xl" style="height: 800px;">
+        <div id="music-player" class="py-20 bg-gray-100 relative overflow-hidden rounded-3xl" style="height: 800px;">
             <!-- Blurred Background Image -->
             <div class="absolute inset-0 z-0 rounded-3xl overflow-hidden">
                 <img src="logo.jpg" alt="Blurred Background" class="w-full h-full object-cover filter blur-md scale-110">
@@ -166,6 +166,10 @@
             </div>
 
             <div class="absolute inset-0 bg-black opacity-30 z-5"></div>
+            
+
+
+
 
             <!-- Audio Visualizer -->
             <canvas id="visualizer" class="absolute inset-0 w-full h-full z-10"></canvas>
@@ -212,7 +216,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Add the scale-up class to the play button when clicked -->
     <script>
@@ -384,6 +388,7 @@
             // Audio Visualizer
             const canvas = document.getElementById('visualizer');
             const ctx = canvas.getContext('2d');
+            const glowOutline = document.querySelector('#music-player .glow-outline');
             let audioContext, analyser, dataArray, source;
 
             function setupVisualizer() {
@@ -401,6 +406,19 @@
                 Howler.masterGain.connect(analyser);
 
                 drawVisualizer();
+            }
+
+            function updateGlowEffect() {
+                analyser.getByteFrequencyData(dataArray);
+
+                // Calculate an average volume level from the frequency data
+                const avgFrequency = dataArray.reduce((sum, value) => sum + value, 0) / dataArray.length;
+
+                // Set the glow intensity based on the average frequency
+                const intensity = Math.min(avgFrequency / 255, 1);  // Scale the intensity between 0 and 1
+                glowOutline.style.boxShadow = `0 0 ${10 + 40 * intensity}px rgba(255, 255, 255, ${0.7 + 0.3 * intensity})`;
+
+                requestAnimationFrame(updateGlowEffect);
             }
 
             function drawVisualizer() {
@@ -425,6 +443,10 @@
                     x += barWidth + 1;
                 }
             }
+
+            // Initialize the glow effect
+            setupVisualizer();
+            updateGlowEffect();
 
     </script>
 
