@@ -130,7 +130,7 @@ body {
 }
 /* Hover styles */
 .navbar:hover {
-    transition: all 0.3s ease-in;
+    transition: all 0.1s ease-in;
     transform: scale(1.1);
 }
 .image-hover:hover {
@@ -339,13 +339,14 @@ body {
 }
 
 .icon-list img {
+    transition: transform 0.1s ease-in-out, filter 0.1s ease-in-out; /* Add transitions for both properties */
     width: 40px; /* Set icon size */
     height: auto; /* Maintain aspect ratio */
 }
 
 .icon-list img:hover {
-    border: solid #788fff; /* Add a border around the buttons */
-    border-radius: 50%; /* Make it circular */
+    transform: scale(1.2, 1.2); /* Scale the image on hover */
+    filter: hue-rotate(200deg); /* Apply monochrome effect on hover */
 }
 
 .icon-container {
