@@ -420,24 +420,37 @@
 
                 requestAnimationFrame(updateGlowEffect);
             }
+            function getColorForFrequency(frequency, maxFrequency) {
+                // Base hue (you can adjust this to change the overall color)
+                const baseHue = 240; // Blue
 
+                // Calculate lightness based on frequency
+                // Higher frequencies will result in higher lightness values
+                const lightness = 50 + ((maxFrequency - frequency) / maxFrequency) * 50; // Range from 100% to 50%
+
+                // You can adjust saturation as needed
+                const saturation = 100;
+
+                return `hsl(${baseHue}, ${saturation}%, ${lightness}%)`;
+            }
+            
             function drawVisualizer() {
                 requestAnimationFrame(drawVisualizer);
 
                 analyser.getByteFrequencyData(dataArray);
 
-                // Clear the canvas with a transparent fill
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                 const barWidth = (canvas.width / dataArray.length) * 1.5;
-                let barHeight;
                 let x = 0;
 
                 for (let i = 0; i < dataArray.length; i++) {
-                    barHeight = (dataArray[i] / 510) * canvas.height * 0.7;
+                    const barHeight = (dataArray[i] / 255) * canvas.height * 0.7;
 
-                    // Use rgba to set transparency with new color
-                    ctx.fillStyle = `rgba(100, 150, 255, ${barHeight / canvas.height})`;
+                    // Get color based on frequency
+                    const color = getColorForFrequency(dataArray[i], 255);
+
+                    ctx.fillStyle = color;
                     ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
 
                     x += barWidth + 1;
