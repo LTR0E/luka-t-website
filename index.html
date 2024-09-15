@@ -575,6 +575,27 @@
         });
 
         document.addEventListener("DOMContentLoaded", function() {
+
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            const portfolioSection = document.getElementById('portfolio');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        portfolioItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                if (!item.classList.contains('animate')) {
+                                    item.classList.add('animate');
+                                }
+                            }, index * 200); // Changed from 100 to 200 milliseconds
+                        });
+                        observer.unobserve(portfolioSection);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(portfolioSection);
+
             // Set the correct initial play/pause button state when the page loads
             updatePlayPauseButton();
 

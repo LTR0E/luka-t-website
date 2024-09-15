@@ -249,6 +249,21 @@ body {
 }
 
 .portfolio-item {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease; /* Changed from 0.5s to 1s */
+}
+
+.portfolio-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.6s ease; /* Changed from 0.3s to 0.6s */
+}
+.portfolio-item {
     height: 400px;
     display: flex;
     flex-direction: column;
