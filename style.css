@@ -249,11 +249,22 @@ body {
 }
 
 .portfolio-item {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling and shadow effect */
 }
+.portfolio-item img {
+    height: 250px; /* Adjust this to control the image height */
+    object-fit: cover; /* This ensures the image covers the area without distortion */
+}
 
+.portfolio-item .p-6 {
+    flex-grow: 1; /* This allows the text content to fill the remaining space */
+}
 .portfolio-item:hover {
     transform: scale(1.05);  /* Slightly increase size on hover */
+    transition: transform 0.3s ease;
     animation: neonPulse 1.5s infinite ease-in-out;  /* Pulsing glow effect */
 }
 
