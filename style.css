@@ -257,6 +257,8 @@ body {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s ease, transform 1s ease; /* Changed from 0.5s to 1s */
+    position: relative;
+    overflow: hidden;
 }
 
 .portfolio-item.animate {
@@ -286,6 +288,14 @@ body {
     transform: scale(1.05);  /* Slightly increase size on hover */
     transition: transform 0.3s ease;
     animation: neonPulse 1.5s infinite ease-in-out;  /* Pulsing glow effect */
+}
+.pi-text {
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.1s ease; /* Changed from 0.5s to 1s */
+    font-family: 'Satoshi', sans-serif;
+}
+.pi-text:hover{
+    opacity: 1;
 }
 
 /* Fade-in animation for the about section */
