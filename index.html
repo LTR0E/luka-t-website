@@ -225,7 +225,7 @@
                             <h3 class="font-bold text-indigo-600">Graphic design</h3>
                             <p class="text-gray-700 mt-2">Created graphic designs for promotional materials.</p>
                         </div>
-                        <div class="hover-text absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white pi-text">
+                        <div class="hover-text absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white ">
                             Click here for more
                         </div>
                     </a>
@@ -364,6 +364,9 @@
                 trackTitle.textContent = `Loading: ${trackName}`;
                 console.log(`Loading track: ${trackSrc}`);
 
+                let isPlaying = false;
+                let loadError = false;
+
                 sound = new Howl({
                     src: [
                         trackSrc.replace('.mp3', '.ogg'),
@@ -374,9 +377,14 @@
                     volume: volumeControl.value,
                     onload: () => {
                         console.log(`Track loaded: ${trackSrc}`);
-                        sound.play();
-                        trackTitle.textContent = `Now playing: ${trackName}`;
+                        if (!loadError) {
+                            sound.play();
+                        }
+                    },
+                    onplay: () => {
+                        console.log(`Track playing: ${trackSrc}`);
                         isPlaying = true;
+                        trackTitle.textContent = `Now playing: ${trackName}`;
                         updatePlayPauseButton();
                         timeDisplay.textContent = `0:00 / ${formatTime(sound.duration())}`;
                         if (!audioContext) {
@@ -390,13 +398,27 @@
                     },
                     onloaderror: (id, err) => {
                         console.error(`Error loading track: ${err}`, trackSrc);
-                        trackTitle.textContent = 'Error loading track';
+                        loadError = true;
+                        if (!isPlaying) {
+                            trackTitle.textContent = 'Error loading track';
+                        }
                     },
                     onplayerror: (id, err) => {
                         console.error(`Error playing track: ${err}`, trackSrc);
-                        trackTitle.textContent = 'Error playing track';
+                        if (!isPlaying) {
+                            trackTitle.textContent = 'Error playing track';
+                        }
                     }
                 });
+
+                // Add a timeout to check if the track is actually playing
+                setTimeout(() => {
+                    if (!isPlaying && !loadError) {
+                        console.log('Track not playing after timeout, attempting to play again');
+                        sound.play();
+                    }
+                }, 2000); // 2 seconds timeout
+
             } catch (error) {
                 console.error('Unexpected error loading track:', error);
                 trackTitle.textContent = 'Error loading track';
