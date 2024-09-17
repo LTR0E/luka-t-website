@@ -22,7 +22,7 @@
 <body class="bg-gray-100 text-gray-800">
 
     <!-- Navbar with ARIA labels -->
-    <nav class="bg-white bg-opacity-80 shadow dark:bg-gray-900 dark:bg-opacity-80 fixed w-full top-0 z-50 transition-all duration-300" aria-label="Main Navigation">
+    <nav class="bg-white bg-opacity-80 shadow dark:bg-gray-900 dark:bg-opacity-80 fixed w-full top-0 z-50 transition-all duration-300 navbar-hidden" aria-label="Main Navigation">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="nav-container w-full flex justify-between items-center">
@@ -86,13 +86,71 @@
     <!-- Home Section with proper alt attributes -->
     <section id="home" class="bg-cover bg-center h-screen" aria-label="Home section with background image of music related content and logo">
         <div class="flex items-center justify-center h-full bg-black bg-opacity-50">
-            <div class="text-center">
+            <div class="text-center text-fade-left">
                 <h1 class="text-4xl font-bold text-white">Luka Trenchovski</h1>
                 <p class="text-xl text-gray-300 mt-4">Freelance Music Producer & Graphic Designer</p>
             </div>
         </div>
     </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textSection = document.querySelector('.text-fade-left');
+            const navbar = document.querySelector('nav');
+            let navbarVisible = false;
+            let textAnimationTriggered = false;
+    
+            // Function to show the navbar
+            const showNavbar = () => {
+                if (!navbarVisible) {
+                    setTimeout(() => {
+                        navbar.classList.add('navbar-visible');
+                        navbar.classList.remove('navbar-hidden');
+                        navbarVisible = true;
+                    }, 100); // Adds a 100ms delay for smoother appearance
+                }
+            };
 
+    
+            // IntersectionObserver for the text fade-in animation
+            const textObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !textAnimationTriggered) {
+                        textSection.classList.add('text-visible');
+                        textSection.addEventListener('animationend', () => {
+                            showNavbar(); // Show navbar after text animation
+                        }, { once: true }); // Ensure it runs only once
+                        textObserver.unobserve(textSection);
+                        textAnimationTriggered = true;
+                    }
+                });
+            });
+    
+            // Observe the text section for intersection
+            textObserver.observe(textSection);
+    
+            // Scroll listener to ensure the navbar appears after scrolling past a threshold
+            const scrollThreshold = 200; // Adjust threshold as needed
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > scrollThreshold) {
+                    showNavbar(); // Show navbar if scrolled past threshold
+                }
+            });
+    
+            // Handle page reload at different scroll positions
+            window.addEventListener('load', function() {
+                if (window.scrollY > scrollThreshold) {
+                    showNavbar(); // Show navbar if already scrolled past the threshold on page load
+                }
+            });
+        });
+    </script>
+
+
+    
+    
+    
+    
     <!-- About Me Section -->
     <section id="about" class="py-20 bg-white">
         <div class="max-w-5xl mx-auto text-center section-fade">
@@ -108,7 +166,7 @@
                     </ul>
                 </div>
                 <div class="mt-8 sm:mt-0">
-                    <h3 class="text-xl font-bold text-indigo-900">Skills/Services</h3>
+                    <h3 class="text-xl font-bold text-indigo-900 ">Skills/Services</h3>
                     <ul class="mt-2 text-gray-700">
                         <strong>
                             <li>Music Production</li>
@@ -153,8 +211,6 @@
             </div>
         </div>
     </section>
-
-
 
 
 
@@ -576,6 +632,7 @@
 
         document.addEventListener("DOMContentLoaded", function() {
 
+
             const portfolioItems = document.querySelectorAll('.portfolio-item');
             const portfolioSection = document.getElementById('portfolio');
 
@@ -593,6 +650,7 @@
                     }
                 });
             }, { threshold: 0.1 });
+            
 
             observer.observe(portfolioSection);
 
@@ -647,7 +705,10 @@
 
 
 
+
     </script>
+
+
 
 
 </body>

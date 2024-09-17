@@ -18,6 +18,28 @@ h1, h2, h3, h4, h5, h6, li, p {
     height: auto;
 }
 
+/* Navbar fade-in from top */
+@keyframes fadeInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar-hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Extend navbar fade-in with a delay */
+.navbar-visible {
+    animation: fadeInFromTop 0.7s ease-out forwards; /* Changed to 0.7s for smoother transition */
+}
 
 
 .nav-container {
@@ -33,7 +55,6 @@ h1, h2, h3, h4, h5, h6, li, p {
     z-index: 1000;
     height: 5rem;
 }
-
 .nav-links {
     display: flex;
     justify-content: center;
@@ -233,20 +254,7 @@ body {
     }
 }
 
-@keyframes neonPulse {
-    0%, 100% {
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 
-                    0 0 30px rgba(0, 255, 255, 0.6),
-                    0 0 45px rgba(0, 255, 255, 0.4),
-                    0 0 60px rgba(0, 255, 255, 0.2);
-    }
-    50% {
-        box-shadow: 0 0 30px rgba(0, 255, 255, 1),  /* Brighter at midpoint */
-                    0 0 60px rgba(0, 255, 255, 0.8),
-                    0 0 90px rgba(0, 255, 255, 0.6),
-                    0 0 120px rgba(0, 255, 255, 0.4);
-    }
-}
+
 
 .portfolio-item {
     opacity: 0;
@@ -376,4 +384,23 @@ body {
     align-items: center;     /* Centers items vertically */
 
 }
+
+/* Text fade-in from left animation */
+@keyframes fadeInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.text-fade-left {
+    opacity: 0;
+    transform: translateX(-50%);
+    animation: fadeInFromLeft 0.7s ease-out forwards;
+}
+
 
