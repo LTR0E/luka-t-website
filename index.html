@@ -117,6 +117,11 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !textAnimationTriggered) {
                         textSection.classList.add('text-visible');
+                        textSection.addEventListener('animationstart', () => {
+                            setTimeout(() => {
+                                showNavbar(); // Show navbar shortly after text animation starts
+                            }, 200); // 200ms delay, adjust as needed
+                        }, { once: true });
                         textSection.addEventListener('animationend', () => {
                             showNavbar(); // Show navbar after text animation
                         }, { once: true }); // Ensure it runs only once
@@ -153,7 +158,7 @@
     
     <!-- About Me Section -->
     <section id="about" class="py-20 bg-white">
-        <div class="max-w-5xl mx-auto text-center section-fade">
+        <div class="max-w-5xl mx-auto text-center section-fade fade-in-left">
             <h2 class="text-3xl font-bold text-indigo-900">About Me</h2>
             <p class="mt-4 text-lg text-gray-700">I am a creative and versatile <strong> Music Producer</strong> with over <strong>5 years of experience</strong>, <br> specializing in <Strong><em></em>Rap</Strong>, <Strong>R&B</Strong>, and <Strong>Electronic</Strong> music production. <br> I also have experience in the <strong>Graphic Design</strong> field for <strong>5+ years</strong>. <br> Passionate about blending musical styles to create unique and engaging listening experiences. <br> <br> I'm always open to collaboration, feel free to contact me.</p>
             <div class="mt-8 flex flex-col sm:flex-row sm:justify-around">
@@ -182,27 +187,27 @@
     </section>
 
     <script>
-        // Add this script to your existing JavaScript file or in a new <script> tag
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.querySelector('.nav-container');
-            const aboutSection = document.getElementById('about');
-
-            function checkNavbarTransparency() {
-                const aboutSectionTop = aboutSection.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                if (aboutSectionTop <= 0 && aboutSectionTop > -windowHeight) {
-                    navbar.classList.add('transparent');
-                } else {
-                    navbar.classList.remove('transparent');
+        const aboutSection = document.querySelector('#about');
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    const ratio = Math.min(1, entry.intersectionRatio * 2); // Accelerate the effect
+                    entry.target.style.opacity = ratio;
+                    entry.target.style.transform = `translateX(${(1 - ratio) * -50}px)`;
+                    
+                    if (entry.intersectionRatio >= 1) {
+                        aboutObserver.unobserve(entry.target);
+                    }
                 }
-            }
-
-            window.addEventListener('scroll', checkNavbarTransparency);
-            checkNavbarTransparency(); // Check on initial load
+            });
+        }, {
+            threshold: new Array(101).fill(0).map((_, i) => i / 100), // Create thresholds for every 1%
+            rootMargin: '-50px 0px'
         });
-        
+
+        if (aboutSection) {
+            aboutObserver.observe(aboutSection);
+        }
     </script>
 
     <!-- Portfolio Section with improved responsiveness -->

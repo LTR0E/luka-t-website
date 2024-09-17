@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6, li, p {
 
 /* Extend navbar fade-in with a delay */
 .navbar-visible {
-    animation: fadeInFromTop 0.7s ease-out forwards; /* Changed to 0.7s for smoother transition */
+    animation: fadeInFromTop 0.4s ease-out forwards; /* Changed to 0.7s for smoother transition */
 }
 
 
@@ -403,4 +403,19 @@ body {
     animation: fadeInFromLeft 0.7s ease-out forwards;
 }
 
+:root {
+    --fade-distance: 50px;
+    --fade-duration: 0.8s;
+}
 
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(calc(-1 * var(--fade-distance)));
+    transition: opacity var(--fade-duration) ease-out, 
+                transform var(--fade-duration) ease-out;
+}
+
+.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
