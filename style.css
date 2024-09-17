@@ -455,6 +455,11 @@ body {
     background-color: #2d3748; /* Dark background for the about section in dark mode */
 }
 
+#about {
+    -webkit-user-select: none;  /* Safari */
+    -ms-user-select: none;      /* IE 10 and IE 11 */
+    user-select: none;          /* Standard syntax */
+}
 /* Additional styles that could be applied to improve the about section */
 #about h2 {
     font-size: 2rem;
@@ -483,6 +488,9 @@ body {
 #about ul {
     list-style-type: none;
     padding: 0;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #about li {
