@@ -240,17 +240,14 @@ body {
 }
 
 @keyframes neonPulse {
-    0%, 100% {
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 
-                    0 0 30px rgba(0, 255, 255, 0.6),
-                    0 0 45px rgba(0, 255, 255, 0.4),
-                    0 0 60px rgba(0, 255, 255, 0.2);
+    0% {
+        box-shadow: 0 0 5px #4299e1, 0 0 10px #4299e1, 0 0 15px #4299e1, 0 0 20px #4299e1;
     }
     50% {
-        box-shadow: 0 0 30px rgba(0, 255, 255, 1),  /* Brighter at midpoint */
-                    0 0 60px rgba(0, 255, 255, 0.8),
-                    0 0 90px rgba(0, 255, 255, 0.6),
-                    0 0 120px rgba(0, 255, 255, 0.4);
+        box-shadow: 0 0 10px #63b3ed, 0 0 20px #63b3ed, 0 0 30px #63b3ed, 0 0 40px #63b3ed;
+    }
+    100% {
+        box-shadow: 0 0 5px #4299e1, 0 0 10px #4299e1, 0 0 15px #4299e1, 0 0 20px #4299e1;
     }
 }
 
