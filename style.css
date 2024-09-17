@@ -419,3 +419,77 @@ body {
     opacity: 1;
     transform: translateX(0);
 }
+
+/* Fade-in animation for the about section */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.section-fade {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* Specific styles for the about section */
+#about {
+    font-family: 'Satoshi', sans-serif;
+}
+
+/* Dark mode styles affecting the about section */
+.dark .text-indigo-900 {
+    color: #a3bffa; /* Softer indigo for text in dark mode */
+}
+
+.dark .text-gray-700 {
+    color: #a0aec0; /* Softer gray for a balanced look in dark mode */
+}
+
+.dark .bg-white {
+    background-color: #2d3748; /* Dark background for the about section in dark mode */
+}
+
+/* Additional styles that could be applied to improve the about section */
+#about h2 {
+    font-size: 2rem;
+    margin-bottom: 2.8rem;
+}
+
+#about p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 70ch;
+    margin: 0 auto;
+}
+
+#about .skills-education {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#about h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#about ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#about li {
+    margin-bottom: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+#about li:hover {
+    transform: translateX(5px);
+}
