@@ -396,19 +396,6 @@
                         updatePlayPauseButton();
                         playNextTrack();
                     },
-                    onloaderror: (id, err) => {
-                        console.error(`Error loading track: ${err}`, trackSrc);
-                        loadError = true;
-                        if (!isPlaying) {
-                            trackTitle.textContent = 'Error loading track';
-                        }
-                    },
-                    onplayerror: (id, err) => {
-                        console.error(`Error playing track: ${err}`, trackSrc);
-                        if (!isPlaying) {
-                            trackTitle.textContent = 'Error playing track';
-                        }
-                    }
                 });
 
                 // Add a timeout to check if the track is actually playing
