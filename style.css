@@ -2,6 +2,13 @@ h1, h2, h3, h4, h5, h6, li, p {
     font-family: 'Satoshi', sans-serif;
 }
 
+.video-gallery{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #gallery {
     margin-top: 20px;
   }
@@ -335,12 +342,7 @@ body {
 }
 
 
-/* Basic styling for the gallery container */
-.gallery {
-    display: flex;
-    flex-wrap: wrap; /* Allows wrapping to next line if not enough space */
-    justify-content: center; /* Centers items horizontally */
-}
+
 
 /* Styling for each video tile */
 .video-tile {
@@ -357,7 +359,7 @@ body {
 }
 
 #mp-heading {
-    margin-top: 20px;
+    padding: 2%;
 }
 
 /* styles.css */
