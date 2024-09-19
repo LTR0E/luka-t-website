@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
     <!-- Reuse the Navbar from index.html -->
@@ -228,21 +227,6 @@
 
     </footer>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var elem = document.querySelector('.gallery');
-    var msnry = new Masonry(elem, {
-        itemSelector: '.gallery-item',
-        columnWidth: '.gallery-item',
-        percentPosition: true,
-        gutter: 10
-    });
-    
-    // Layout Masonry after each image loads
-    imagesLoaded(elem).on('progress', function() {
-        msnry.layout();
-    });
-    });
-    </script>
+
 </body>
 </html>
