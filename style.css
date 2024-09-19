@@ -10,19 +10,22 @@ h1, h2, h3, h4, h5, h6, li, p {
 }
 
 #gallery {
-    margin-top: 20px;
+    padding: 20px;
   }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Creates as many columns as can fit without shrinking below 300px */
-    gap: 10px; /* Space between images */
-    justify-content: center; /* Center the entire grid */
+  width: 100%;
 }
 
-.gallery img {
-    width: 100%;
-    height: auto;
+.gallery-item {
+  width: calc(33.333% - 10px); /* Adjust based on how many columns you want */
+  margin-bottom: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Navbar fade-in from top */
@@ -529,3 +532,4 @@ body {
         transform: translateY(0);
     }
 }
+
