@@ -397,23 +397,64 @@ body {
     align-items: center;     /* Centers items vertically */
 
 }
-
-/* Text fade-in from left animation */
 @keyframes fadeInFromLeft {
     0% {
         opacity: 0;
         transform: translateX(-50%);
+        filter: blur(10px);
     }
     100% {
         opacity: 1;
         transform: translateX(0);
+        filter: blur(0);
+    }
+}
+/* Text fade-in from left animation */
+@keyframes fadeInFromLeft2 {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+        filter: blur(15px);
+        backdrop-filter: blur(15px);
+    }
+    25% {
+        opacity: 0.3;
+        transform: translateX(-37.5px);
+        filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateX(-25px);
+        filter: blur(7px);
+        backdrop-filter: blur(7px);
+    }
+    75% {
+        opacity: 0.8;
+        transform: translateX(-12.5px);
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+        backdrop-filter: blur(0);
     }
 }
 
 .text-fade-left {
     opacity: 0;
+    transform: translateX(-100%);
+    animation: fadeInFromLeft 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    will-change: opacity, transform, filter, backdrop-filter;
+    transform: translate3d(0, 0, 0);
+
+}
+
+.text-fade-left-2 {
+    opacity: 0;
     transform: translateX(-50%);
-    animation: fadeInFromLeft 0.7s ease-out forwards;
+    animation: fadeInFromLeft2 0.5s ease-out forwards;
 }
 
 :root {
@@ -533,3 +574,18 @@ body {
     }
 }
 
+@keyframes fadeInSequence {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-sequence {
+    opacity: 0;
+    animation: fadeInSequence 0.5s ease-out forwards;
+}
