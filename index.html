@@ -269,7 +269,7 @@
 
 
     <!-- Music Player Section with Scaled Blurred Background and Rounded Corners -->
-    <div class="max-w-6xl mx-auto my-8">
+    <div class="max-w-6xl mx-auto my-8 fade-in-left">
         <div id="music-player" class="py-20 bg-gray-100 relative overflow-hidden rounded-3xl" style="height: 800px;">
             <!-- Blurred Background Image -->
             <div class="absolute inset-0 z-0 rounded-3xl overflow-hidden">
@@ -587,7 +587,7 @@
 
 
     <!-- Contact Section with ARIA and alt attributes -->
-    <section id="contact" class="py-20 bg-gray-100">
+    <section id="contact" class="py-20 bg-gray-100 fade-in-left">
         <div class="max-w-5xl mx-auto text-center">
             <h2 class="text-3xl font-bold text-indigo-900">Contact Me</h2>
             <p class="mt-4 text-lg text-gray-700">Feel free to reach out to discuss potential collaborations or projects.</p>
@@ -644,16 +644,18 @@
         </div>
     </section>
 
-    <div class="icon-container">
-        <ul class="icon-list">
-            <li><a href="https://www.youtube.com/@lukatbeats7798" target="_blank"><img src="icons/youtube-icon.png" alt="YouTube"></a></li>
-            <li><a href="https://www.instagram.com/lukatbeats/" target="_blank"><img src="icons/ig-icon.png" alt="Instagram"></a></li>
-            <!-- Add more social media links as needed -->
-        </ul>
-    </div>
+
 
     <!-- Footer -->
-    <footer class="bg-gray-100 text-gray-400 py-4 text-center">
+     
+    <footer class="bg-gray-100 text-gray-400 py-4 text-center fade-in-left">
+        <div class="icon-container">
+            <ul class="icon-list">
+                <li><a href="https://www.youtube.com/@lukatbeats7798" target="_blank"><img src="icons/youtube-icon.png" alt="YouTube"></a></li>
+                <li><a href="https://www.instagram.com/lukatbeats/" target="_blank"><img src="icons/ig-icon.png" alt="Instagram"></a></li>
+                <!-- Add more social media links as needed -->
+            </ul>
+        </div>
         <p>&copy; 2024 Luka Trenchovski. All Rights Reserved.</p>
     </footer>
 
@@ -769,6 +771,26 @@
 
 
 
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const fadeElements = document.querySelectorAll('.fade-in-left');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(element => {
+                element.style.animationPlayState = 'paused';
+                observer.observe(element);
+            });
+        });
     </script>
 
 
