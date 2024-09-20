@@ -598,3 +598,23 @@ body {
     transform: scale(1.1);
     transition: transform 0.1s ease-in;
 }
+/* Add this to your existing style.css file */
+
+@keyframes fadeInVideo {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.video-tile {
+    opacity: 0;
+}
+
+.video-tile.animated {
+    animation: fadeInVideo 0.8s ease-out forwards;
+}
