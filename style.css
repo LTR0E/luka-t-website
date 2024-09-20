@@ -550,12 +550,42 @@ body {
     transform: translateX(5px);
 }
 
-.portfolio-heading {
-    opacity: 0;
-    transform: translateY(-50px);
-    animation: fadeInFromTop 0.4s ease-out forwards;
+.auto-show {
+    animation: autoShowAnimation both;
+    animation-timeline: view(60% 20%);
 }
-
+.auto-show-left {
+    animation: autoShowAnimationLeft both;
+    animation-timeline: view(80% 30%);
+}
+.auto-show-left-mp {
+    animation: autoShowAnimationLeft both;
+    animation-timeline: view(200% 20%);
+}
+@keyframes autoShowAnimation {
+    from{
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+        filter: blur(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+@keyframes autoShowAnimationLeft {
+    from{
+        opacity: 0;
+        transform: translateX(-50px);
+        filter: blur(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
 @keyframes fadeInFromTop {
     0% {
         opacity: 0;
