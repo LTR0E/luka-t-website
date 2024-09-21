@@ -1,14 +1,44 @@
 h1, h2, h3, h4, h5, h6, li, p {
     font-family: 'Satoshi', sans-serif;
+    font-display: swap;
 }
 
-.video-gallery{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-
+.video-tile {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.video-tile iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+@media (max-width: 640px) {
+    .video-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+    .video-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 #gallery {
     padding: 20px;
   }
@@ -339,21 +369,6 @@ body {
 }
 
 
-
-
-/* Styling for each video tile */
-.video-tile {
-    margin: 10px;
-    margin-top: 30px;
-    border: 2px solid #ddd; /* Optional: Adds a border around the videos */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
-}
-
-/* Responsive iframe styling */
-.video-tile iframe {
-    width: 720px; /* Adjust based on your design needs and responsiveness */
-    height: 480px; /* Standard YouTube aspect ratio is roughly 16:9 */
-}
 
 #mp-heading {
     padding: 2%;

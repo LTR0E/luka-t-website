@@ -41,19 +41,19 @@
         <div class="video-gallery">
             <!-- Video Tile 1 -->
             <div class="video-tile">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/HQtk-eFIB50" title="(FREE) &quot;Punch&quot; - Migos x DaBaby x Future Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/HQtk-eFIB50" title="(FREE) &quot;Punch&quot; - Migos x DaBaby x Future Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <!-- Video Tile 2 -->
             <div class="video-tile">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/hrDLsjWnLBQ" title="(FREE) &quot;Paper&quot; - DaBaby X Rich The Kid Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/hrDLsjWnLBQ" title="(FREE) &quot;Paper&quot; - DaBaby X Rich The Kid Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <!-- Video Tile 3 -->
             <div class="video-tile">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/MQ8z9S5DzEM" title="(FREE) &quot;Era&quot; - Pop Smoke x Fivio Foreign Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/MQ8z9S5DzEM" title="(FREE) &quot;Era&quot; - Pop Smoke x Fivio Foreign Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <!-- Video Tile 4 -->
             <div class="video-tile">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/_TfxLVTNCJw" title="(FREE) &quot;Fraud&quot; - Comethazine x Smokepurpp Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/_TfxLVTNCJw" title="(FREE) &quot;Fraud&quot; - Comethazine x Smokepurpp Type Beat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -148,6 +148,34 @@
             }, { threshold: 0.1 });
         
             videoTiles.forEach(tile => {
+                observer.observe(tile);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoTiles = document.querySelectorAll('.video-tile');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                            const iframe = entry.target.querySelector('iframe');
+                            const src = iframe.getAttribute('data-src');
+                            if (src) {
+                                iframe.setAttribute('src', src);
+                            }
+                        }, index * 200); // 200ms delay between each video
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+        
+            videoTiles.forEach(tile => {
+                const iframe = tile.querySelector('iframe');
+                const src = iframe.getAttribute('src');
+                iframe.setAttribute('data-src', src);
+                iframe.removeAttribute('src');
                 observer.observe(tile);
             });
         });
