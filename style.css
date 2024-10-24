@@ -81,7 +81,6 @@ h1, h2, h3, h4, h5, h6, li, p {
     animation: fadeInFromTop 0.4s ease-out forwards; /* Changed to 0.7s for smoother transition */
 }
 
-
 .nav-container {
     display: flex;
     justify-content: center;
