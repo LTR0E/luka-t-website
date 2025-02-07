@@ -46,7 +46,9 @@ h1, h2, h3, h4, h5, h6, li, p {
 .gallery {
   width: 100%;
 }
-
+#gallery-images{
+    padding: 20px;
+}
 .gallery-item {
   width: calc(33.333% - 10px); /* Adjust based on how many columns you want */
   margin-bottom: 10px;
@@ -130,7 +132,8 @@ h1, h2, h3, h4, h5, h6, li, p {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: auto;
+    height: auto;
     max-width: 700px;
 }
 
@@ -285,6 +288,10 @@ body {
 }
 
 
+#portfolio {
+    padding-left: 50px;
+    padding-right: 50px;
+}
 
 .portfolio-item {
     opacity: 0;
@@ -692,4 +699,10 @@ body {
 .quick-fade-in {
     opacity: 0;
     animation: quickFadeIn 0.3s ease-out forwards;
+}
+
+
+#contact {
+    padding-left: 50px;
+    padding-right: 50px;
 }
